@@ -31,9 +31,7 @@ function getReceipt() {
 
     // adding and printing totals
     runningTotal = sizeTotal;
-    //console.log(selectedSize+" = $"+sizeTotal+".00");
-    //console.log("size text1: "+text1);
-    //console.log("subtotal: $"+runningTotal+".00");
+    
     getMeat(runningTotal,text1,text2); // These variables will be passed to each additional function
 };
 
@@ -47,8 +45,7 @@ function getMeat(runningTotal,text1,text2) {
     for (var j =0; j < meatArray.length; j++) {
         if (meatArray[j].checked){
             selectedMeat.push(meatArray[j].value);
-            //console.log("selected meat item: ("+meatArray[j].value+")");
-            //text1 = text1+meatArray[j].value+"<br>";
+            
         }
     }
 
@@ -76,13 +73,8 @@ function getMeat(runningTotal,text1,text2) {
                 meatCount = meatCount - 1;
             }
     }
-    //console.log("total selected meat items: "+meatCount);
-    //console.log(meatCount+" meat - 1 free meat = "+"$"+meatTotal+".00");
-    //console.log("meat text1: "+text1);
-    //console.log("Purchase Total: "+"$"+runningTotal+".00");
-    //document.getElementById("showText").innerHTML=text1;
-    //document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
-    getVeggies(runningTotal,text1,text2); // Once getMeat in finished it calls getVeggies in order to add the veggies to the total
+    
+    getVeggies(runningTotal,text1,text2); // Once getMeat is finished it calls getVeggies in order to add the veggies to the total
 }
 
 function getVeggies(runningTotal,text1,text2) {
@@ -94,8 +86,7 @@ function getVeggies(runningTotal,text1,text2) {
     for (var v =0; v < veggieArray.length; v++) {
         if (veggieArray[v].checked){
             selectedVeggie.push(veggieArray[v].value);
-            //console.log("selected veggie item: ("+veggieArray[v].value+")");
-            //text1 = text1+veggieArray[v].value+"<br>";
+            
         }
     }
 
@@ -116,18 +107,14 @@ function getVeggies(runningTotal,text1,text2) {
                 text2 = text2 + 0 +"<br>";
                 veggieCount = veggieCount - 1;
             } else if (veggieCount == 2) {
+                text2 = text2 + 1 + "<br>";
                 veggieCount = veggieCount - 1;
             } else {
                 text2 = text2 + 1 + "<br>";
                 veggieCount = veggieCount - 1;
             }
     }
-    //console.log("total selected veggie items: "+veggieCount);
-    //console.log(veggieCount+" veggie - 1 free veggie = "+"$"+veggieTotal+".00");
-    //console.log("veggie text1: "+text1);
-    //console.log("Purchase Total: "+"$"+runningTotal+".00");
-    //document.getElementById("showText").innerHTML=text1;
-    //document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
     getCheese(runningTotal,text1,text2);
 }
 
@@ -140,7 +127,7 @@ function getCheese(runningTotal,text1,text2) {
     for (var c =0; c < cheeseArray.length; c++) {
         if (cheeseArray[c].checked) {
             var selectedCheese = cheeseArray[c].value;
-            //text1 = text1+selectedCheese+"<br>";
+            
         }
         if (selectedCheese === "Extra Cheese") {
                 cheeseTotal = 3;
@@ -151,11 +138,7 @@ function getCheese(runningTotal,text1,text2) {
     text2 = text2+cheeseTotal+"<br>";
     text1 = text1+selectedCheese+"<br>";
     runningTotal = (runningTotal + cheeseTotal);
-    //console.log(selectedCheese+" = $"+cheeseTotal+".00");
-    //console.log("cheese text1: "+text1);
-    //console.log("subtotal: $"+runningTotal+".00");
-    //document.getElementById("showText").innerHTML=text1;
-    //document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
     getSauce(runningTotal,text1,text2);
 }
 
@@ -171,11 +154,7 @@ function getSauce(runningTotal,text1,text2) {
     }
 
     text2 = text2+ 0 +"<br>";
-    //console.log(selectedSauce+" = $"+sauceTotal+".00");
-    //console.log("sauce text1: "+text1);
-    //console.log("subtotal: $"+runningTotal+".00");
-    //document.getElementById("showText").innerHTML=text1;
-    //document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
+    
     getCrust(runningTotal,text1,text2);
 }
 
@@ -190,14 +169,15 @@ function getCrust(runningTotal,text1,text2) {
             selectedCrust = crustArray[c].value;
             text1 = text1+selectedCrust+"<br>";
         }
+        if (selectedCrust === "Cheese Stuffed Crust") {
+			crustTotal = 3;
+		}
     }
 
     // adding and printing totals
     runningTotal = (runningTotal + crustTotal);
     text2 = text2 +crustTotal+"<br>";
-    //console.log(selectedCrust+" = $"+crustTotal+".00");
-    //console.log("crust text1: "+text1);
-    //console.log("subtotal: $"+runningTotal+".00");
+    
     document.getElementById("showText1").innerHTML=text1;
     document.getElementById("showText2").innerHTML=text2;
     document.getElementById("totalPrice").innerHTML = "</h3>Total: <strong>$"+runningTotal+".00"+"</strong></h3>";
